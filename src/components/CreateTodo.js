@@ -1,9 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 export default function CreateTodo() {
-    const navigate = useNavigate();
 
     const [inputs, setInputs] = useState([]);
 
@@ -15,12 +13,12 @@ export default function CreateTodo() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        axios.post('http://localhost:8888/api/todos', inputs).then(function(response){
+       axios.post('http://localhost:8888/api/todos', inputs).then(function(response){
             console.log(response.data);
-            navigate('/');
+            window.location = '/';
         });
-        
-    }
+	}
+    
     return (
         <div>
             <h1>Create Todo</h1>
@@ -35,7 +33,7 @@ export default function CreateTodo() {
                                 <input type="text" name="name" onChange={handleChange} />
                             </td>
                         </tr>
-                    
+                       
                         <tr>
                             <td colSpan="2" align ="right">
                                 <button>Save</button>

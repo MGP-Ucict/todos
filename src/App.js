@@ -1,8 +1,11 @@
-import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
+import {BrowserRouter, Router, Route, Link} from 'react-router-dom';
+import {Switch} from 'react-router'; 
 import './App.css';
+import { createBrowserHistory } from 'history';
 import CreateTodo from './components/CreateTodo';
 import ListTodo from './components/ListTodo';
 function App() {
+	const newHistory = createBrowserHistory();
   return (
     <div className="App">
       <h5>React CRD operations using PHP API and MySQL</h5>
@@ -13,14 +16,16 @@ function App() {
               <Link to="/">List Todos</Link>
             </li>
             <li>
-              <Link to="todo/create">Create Todo</Link>
+              <Link to="/todo/create">Create Todo</Link>
             </li>
           </ul>
         </nav>
-        <Routes>
-          <Route index element={<ListTodo />} />
-          <Route path="todo/create" element={<CreateTodo />} />
-        </Routes>
+        <Router  history={newHistory}>
+			<Switch>
+				<Route path="/" component={ListTodo}/>
+				<Route path="/todo/create" component={CreateTodo}/>           
+			</Switch>
+		</Router>
       </BrowserRouter>
     </div>
   );
