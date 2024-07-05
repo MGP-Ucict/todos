@@ -13,13 +13,13 @@ function App() {
               <Link to="/">List Todos</Link>
             </li>
             <li>
-              <Link to="todo/create">Create User</Link>
+              <Link to="todo/create">Create Todo</Link>
             </li>
           </ul>
         </nav>
         <Routes>
           <Route index element={<ListTodo />} />
-          <Route path="todo/create" element={<CreaeTodo />} />
+          <Route path="todo/create" element={<CreateTodo />} />
         </Routes>
       </BrowserRouter>
     </div>
